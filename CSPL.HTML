@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yasself • premium cs2 guide 2026</title>
+    <style>
+        /* ===== СБРОС И ПЕРЕМЕННЫЕ ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0A0C0F;
+            --surface: #12161B;
+            --surface-hover: #1A1F26;
+            --accent: #D4A373;
+            --accent-soft: #B28B5E;
+            --text: #E8E9EA;
+            --text-soft: #9AA4B3;
+            --border: #2A313C;
+            --success: #7FB77E;
+            --code-bg: #1E242B;
+            --gradient: linear-gradient(145deg, #D4A373 0%, #B28B5E 100%);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            letter-spacing: -0.01em;
+        }
+
+        /* ===== ТИПОГРАФИКА ===== */
+        h1, h2, h3 {
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 6vw, 3.2rem);
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-bottom: 1.2rem;
+        }
+
+        /* ===== КОНТЕЙНЕР ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* ===== ШАПКА ===== */
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 2rem;
+            background: var(--surface);
+            border-radius: 2rem;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .seller-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 163, 115, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 100px;
+            padding: 0.6rem 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .seller-name {
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .seller-badge {
+            background: var(--accent);
+            color: var(--bg);
+            padding: 0.2rem 0.8rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-soft);
+            margin-bottom: 2rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg);
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        .stat-item span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ===== НАВИГАЦИЯ ===== */
+        .nav-card {
+            background: var(--surface);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border);
+        }
+
+        .nav-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0.8rem 1.2rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            background: var(--surface-hover);
+        }
+
+        /* ===== СЕКЦИИ ===== */
+        .section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 2rem;
+        }
+
+        /* ===== КАРТОЧКИ ===== */
+        .card {
+            background: var(--surface);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+        }
+
+        /* ===== КОД ===== */
+        .code-block {
+            background: var(--code-bg);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1.2rem 0;
+            position: relative;
+            border: 1px solid var(--border);
+        }
+
+        .code-block pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #A9D5A5;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-soft);
+            padding: 0.4rem 1rem;
+            border-radius: 0.6rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+        }
+
+        /* ===== ТАБЛИЦЫ ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            margin: 1.2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: var(--code-bg);
+            color: var(--accent);
+            font-weight: 500;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-soft);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        td.highlight {
+            color: var(--success);
+            font-weight: 500;
+        }
+
+        /* ===== СЕТКА ПРИЦЕЛОВ ===== */
+        .crosshair-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .crosshair-item {
+            background: var(--code-bg);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .crosshair-name {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .crosshair-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--success);
+            word-break: break-all;
+            line-height: 1.4;
+        }
+
+        /* ===== СПИСКИ ===== */
+        .settings-list {
+            list-style: none;
+        }
+
+        .settings-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .settings-list li:last-child {
+            border-bottom: none;
+        }
+
+        .settings-list li::before {
+            content: '→';
+            color: var(--accent);
+            font-weight: 300;
+        }
+
+        /* ===== НОУТЫ ===== */
+        .note {
+            background: rgba(212, 163, 115, 0.05);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.5rem;
+            border-radius: 0 0.8rem 0.8rem 0;
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            margin-top: 1rem;
+        }
+
+        /* ===== БОНУС СЕКЦИЯ ===== */
+        .bonus {
+            background: linear-gradient(145deg, rgba(127, 183, 126, 0.05), rgba(212, 163, 115, 0.05));
+            border: 1px solid var(--success);
+        }
+
+        .bonus h2 {
+            border-bottom-color: var(--success);
+        }
+
+        /* ===== ПОДВАЛ ===== */
+        footer {
+            margin-top: 5rem;
+            padding: 2rem;
+            background: var(--surface);
+            border-radius: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .seller-signature {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-soft);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            color: var(--text-soft);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .hero {
+                padding: 2rem 1rem;
+            }
+            
+            .stats {
+                gap: 1rem;
+            }
+            
+            .stat-item {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .copy-btn {
+                position: static;
+                width: 100%;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .crosshair-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ГЕРОЙ С НИКОМ ПРОДАВЦА -->
+        <div class="hero">
+            <div class="seller-tag">
+                <span>продавец</span>
+                <span class="seller-name">yasself</span>
+                <span class="seller-badge">premium</span>
+            </div>
+            <h1>cs2 professional<br>settings 2026</h1>
+            <div class="hero-subtitle">+100 FPS • pro configs • 10+ crosshairs</div>
+            <div class="stats">
+                <div class="stat-item">📊 продаж <span>15,000+</span></div>
+                <div class="stat-item">⭐ рейтинг <span>4.9</span></div>
+                <div class="stat-item">🔄 обновлено <span>фев 2026</span></div>
+            </div>
+        </div>
+
+        <!-- НАВИГАЦИЯ (МИНИМАЛИСТИЧНАЯ) -->
+        <div class="nav-card">
+            <div class="nav-title">📋 навигация по гайду</div>
+            <div class="nav-grid">
+                <a href="#fps" class="nav-link">🚀 fps boost</a>
+                <a href="#config" class="nav-link">⚙️ конфиг</a>
+                <a href="#video" class="nav-link">🎮 nvidia/amd</a>
+                <a href="#crosshair" class="nav-link">🎯 прицелы</a>
+                <a href="#sound" class="nav-link">🔊 звук</a>
+                <a href="#training" class="nav-link">🏋️ тренировка</a>
+                <a href="#pro" class="nav-link">👑 про настройки</a>
+            </div>
+        </div>
+
+        <!-- FPS НАСТРОЙКИ -->
+        <section id="fps" class="section">
+            <h2>🚀 максимум fps</h2>
+            
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">⚡</span>
+                    <h3>параметры запуска steam</h3>
+                </div>
+                <div class="code-block">
+                    <pre><code>-freq 240 -high +cl_interp 0.01562 +cl_updaterate 128 +cl_cmdrate 128 +cl_interp_ratio 1 +console +rate 128000 +mat_queue_mode 2 -d3d9ex -nojoy +fps_max 0</code></pre>
+                    <button class="copy-btn" onclick="copyToClipboard(this)">копировать</button>
+                </div>
+                <div class="note">💡 свойства cs2 → параметры запуска</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                    <h3>тест производительности</h3>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <tr>
+                            <th>разрешение</th>
+                            <th>оч. высокие</th>
+                            <th>высокие</th>
+                            <th>средние</th>
+                            <th>низкие</th>
+                        </tr>
+                        <tr>
+                            <td>1920x1080</td>
+                            <td>30-40</td>
+                            <td>40-50</td>
+                            <td>90-100</td>
+                            <td>100-120</td>
+                        </tr>
+                        <tr>
+                            <td>1280x720</td>
+                            <td>60-70</td>
+                            <td>80-90</td>
+                            <td>110-130</td>
+                            <td class="highlight">125-145 ⭐</td>
+                        </tr>
+                        <tr>
+                            <td>1024x768</td>
+                            <td>70-80</td>
+                            <td>90-100</td>
+                            <td>110-125</td>
+                            <td class="highlight">125-140 ⭐</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="note">📌 для слабых пк — 1024x768 (растянуто)</div>
+            </div>
+        </section>
+
+        <!-- КОНФИГ -->
+        <section id="config" class="section">
+            <h2>⚙️ готовый конфиг</h2>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">⌨️</span>
+                    <h3>autoexec.cfg</h3>
+                </div>
+                <div class="code-block">
+                    <pre><code>// основные бинды
+bind "z" "slot7"           // дым
+bind "x" "slot8"           // светошумовая  
+bind "c" "slot6"           // осколочная
+bind "v" "slot10"          // коктейль
+
+// отключение голосового чата
+bind "t" "toggle voice_modenable 1 0"
+
+// jumpthrow (для смоков)
+alias +jumpthrow "+jump;-attack"
+alias -jumpthrow "-jump"
+bind "space" +jumpthrow
+
+// сброс бомбы
+bind "b" "use weapon_knife; use weapon_c4; drop; slot1"
+
+// громкость шагов
+alias +incvol "incrementvar volume 0 2 0.5; +sprint"
+alias -incvol "incrementvar volume 0 2 -0.5; -sprint"
+bind "shift" +incvol
+
+// очистка крови
+bind "mouse3" "r_cleardecals"</code></pre>
+                    <button class="copy-btn" onclick="copyToClipboard(this)">копировать</button>
+                </div>
+                <div class="note">📁 сохрани в \cs2\cfg\autoexec.cfg</div>
+            </div>
+        </section>
+
+        <!-- НАСТРОЙКИ ВИДЕОКАРТЫ -->
+        <section id="video" class="section">
+            <h2>🎮 настройки nvidia/amd</h2>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🎛️</span>
+                    <h3>nvidia control panel</h3>
+                </div>
+                <ul class="settings-list">
+                    <li>режим управления питанием — макс. производительность</li>
+                    <li>сглаживание fxaa — выкл</li>
+                    <li>фильтрация текстур — высокая производительность</li>
+                    <li>вертикальный синхроимпульс — выкл</li>
+                    <li>заранее подготовленные кадры vr — 1</li>
+                    <li>шейдерный кэш — вкл</li>
+                    <li>режим низкой задержки — ультра</li>
+                </ul>
+                <div class="note">💡 для amd: всё на производительность + anti-lag</div>
+            </div>
+        </section>
+
+        <!-- ПРИЦЕЛЫ -->
+        <section id="crosshair" class="section">
+            <h2>🎯 прицелы топ-игроков</h2>
+            <div class="crosshair-grid">
+                <div class="crosshair-item">
+                    <div class="crosshair-name">s1mple (navi)</div>
+                    <div class="crosshair-code">cl_crosshairalpha 255; cl_crosshaircolor 1; cl_crosshairdot 0; cl_crosshairgap -2; cl_crosshairsize 4; cl_crosshairstyle 4; cl_crosshairthickness 0.5</div>
+                </div>
+                <div class="crosshair-item">
+                    <div class="crosshair-name">zywoo (vitality)</div>
+                    <div class="crosshair-code">cl_crosshairalpha 255; cl_crosshaircolor 2; cl_crosshairdot 1; cl_crosshairgap -2; cl_crosshairsize 2.5; cl_crosshairstyle 4; cl_crosshairthickness 0.5</div>
+                </div>
+                <div class="crosshair-item">
+                    <div class="crosshair-name">monesy (g2)</div>
+                    <div class="crosshair-code">cl_crosshairalpha 255; cl_crosshaircolor 1; cl_crosshairdot 0; cl_crosshairgap -3; cl_crosshairsize 3; cl_crosshairstyle 4; cl_crosshairthickness 1; cl_crosshair_drawoutline 1</div>
+                </div>
+                <div class="crosshair-item">
+                    <div class="crosshair-name">niko (g2)</div>
+                    <div class="crosshair-code">cl_crosshairalpha 255; cl_crosshaircolor 4; cl_crosshairdot 1; cl_crosshairgap -3; cl_crosshairsize 4; cl_crosshairstyle 5; cl_crosshairthickness 0.5</div>
+                </div>
+                <div class="crosshair-item">
+                    <div class="crosshair-name">donk (spirit)</div>
+                    <div class="crosshair-code">cl_crosshairalpha 255; cl_crosshaircolor 1; cl_crosshairdot 0; cl_crosshairgap -1; cl_crosshairsize 3.5; cl_crosshairstyle 4; cl_crosshairthickness 0.5; cl_crosshair_drawoutline 1</div>
+                </div>
+                <div class="crosshair-item">
+                    <div class="crosshair-name">sh1ro (cloud9)</div>
+                    <div class="crosshair-code">cl_crosshairalpha 255; cl_crosshaircolor 5; cl_crosshaircolor_r 0; cl_crosshaircolor_g 255; cl_crosshaircolor_b 0; cl_crosshairdot 0; cl_crosshairgap -2; cl_crosshairsize 3; cl_crosshairstyle 4; cl_crosshairthickness 0.5</div>
+                </div>
+            </div>
+            <div class="note">✨ вставь код в консоль (~) и нажми enter</div>
+        </section>
+
+        <!-- ЗВУК -->
+        <section id="sound" class="section">
+            <h2>🔊 слышимость шагов</h2>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🎧</span>
+                    <h3>настройки звука</h3>
+                </div>
+                <ul class="settings-list">
+                    <li>громкость — 0.5–1.0 (подбери под себя)</li>
+                    <li>громкость музыки — 0</li>
+                    <li>динамический диапазон — ночной режим</li>
+                    <li>звук в наушниках — вкл</li>
+                    <li>3d аудио — выкл</li>
+                </ul>
+                <div class="code-block">
+                    <pre><code>snd_tensecondwarning_volume 0
+snd_roundstart_volume 0
+snd_roundend_volume 0
+snd_deathcamera_volume 0
+snd_music_selection 0</code></pre>
+                    <button class="copy-btn" onclick="copyToClipboard(this)">копировать</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ТРЕНИРОВКА -->
+        <section id="training" class="section">
+            <h2>🏋️ тренировочные команды</h2>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🎯</span>
+                    <h3>sv_cheats 1</h3>
+                </div>
+                <div class="code-block">
+                    <pre><code>sv_cheats 1
+
+// попадания пуль
+sv_showimpacts 2
+
+// траектория гранат
+sv_grenade_trajectory 1
+
+// бесконечные патроны
+sv_infinite_ammo 1
+
+// полёт сквозь стены
+noclip
+
+// неуязвимость
+god
+
+// быстрый рестарт
+mp_roundtime 60
+mp_buytime 60000
+mp_buy_anywhere 1
+mp_freezetime 0
+mp_warmup_end
+
+// боты
+bot_add
+bot_stop 1</code></pre>
+                    <button class="copy-btn" onclick="copyToClipboard(this)">копировать</button>
+                </div>
+                <div class="note">⚠️ только в приватном лобби</div>
+            </div>
+        </section>
+
+        <!-- ПРО-НАСТРОЙКИ -->
+        <section id="pro" class="section">
+            <h2>👑 настройки pro</h2>
+            
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🌟</span>
+                    <h3>s1mple (navi)</h3>
+                </div>
+                <ul class="settings-list">
+                    <li>разрешение — 1280x960 (растянуто)</li>
+                    <li>чувствительность — 3.09</li>
+                    <li>dpi — 400</li>
+                    <li>монитор — 240hz</li>
+                </ul>
+                <div class="code-block">
+                    <pre><code>sensitivity 3.09
+zoom_sensitivity_ratio_mouse 1
+m_yaw 0.022
+cl_crosshairalpha 255
+cl_crosshaircolor 1
+cl_crosshairdot 0
+cl_crosshairgap -2
+cl_crosshairsize 4
+cl_crosshairstyle 4
+cl_crosshairthickness 0.5</code></pre>
+                    <button class="copy-btn" onclick="copyToClipboard(this)">копировать</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">✨</span>
+                    <h3>monesy (g2)</h3>
+                </div>
+                <ul class="settings-list">
+                    <li>разрешение — 1280x960 (растянуто)</li>
+                    <li>чувствительность — 2.7</li>
+                    <li>dpi — 400</li>
+                </ul>
+                <div class="code-block">
+                    <pre><code>sensitivity 2.7
+cl_crosshairalpha 255
+cl_crosshaircolor 1
+cl_crosshairdot 0
+cl_crosshairgap -3
+cl_crosshairsize 3
+cl_crosshairstyle 4
+cl_crosshairthickness 1
+cl_crosshair_outlinethickness 1
+cl_crosshair_drawoutline 1</code></pre>
+                    <button class="copy-btn" onclick="copyToClipboard(this)">копировать</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- БОНУС -->
+        <section class="section bonus">
+            <h2>🎁 бонус</h2>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">💡</span>
+                    <h3>лайфхаки для победы</h3>
+                </div>
+                <ul class="settings-list">
+                    <li>экономика mr12 — форси реже, копи на закупки</li>
+                    <li>радиус взрыва бомбы увеличили — учитывай при спасении</li>
+                    <li>новые binds для гранат</li>
+                </ul>
+                <div class="code-block">
+                    <pre><code>// быстрый бросок
+alias +quicknade "slot6; +attack"
+alias -quicknade "-attack; slot1"
+bind "q" +quicknade</code></pre>
+                    <button class="copy-btn" onclick="copyToClipboard(this)">копировать</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ПОДВАЛ С НИКОМ -->
+        <footer>
+            <div class="footer-content">
+                <div class="seller-signature">yasself</div>
+                <div class="footer-links">
+                    <a href="#">telegram</a>
+                    <a href="#">playerok</a>
+                    <a href="#">funpay</a>
+                </div>
+                <div class="copyright">
+                    premium cs2 guide 2026 • обновлено: февраль<br>
+                    © все права защищены • полное копирование запрещено
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function copyToClipboard(button) {
+            const codeBlock = button.parentElement.querySelector('code, pre');
+            let textToCopy = codeBlock.innerText || codeBlock.textContent;
+            textToCopy = textToCopy.trim();
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'скопировано!';
+                button.style.background = '#7FB77E';
+                button.style.color = '#0A0C0F';
+                
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.style.background = '';
+                    button.style.color = '';
+                }, 2000);
+            });
+        }
+
+        // плавный скролл
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
